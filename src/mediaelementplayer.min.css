@@ -704,13 +704,15 @@ a:visited {
 
 .mejs-captions-layer {
 	position: absolute;
-	bottom: 0;
+	bottom: 18;
 	left: 0;
 	text-align:center;
 	/*font-weight: bold;*/
 	line-height: 22px;
 	font-size: 22px;
-	color: #fff;
+	/* color: #fff; */
+	color: yellow;
+  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black;
 }
 .mejs-captions-layer  a {
 	color: #fff;
@@ -724,18 +726,18 @@ a:visited {
 .mejs-captions-position {
 	position: absolute;
 	width: 100%;
-	bottom: 15px;
+	bottom: 18px;
 	left: 0;
 }
 
 .mejs-captions-position-hover {
-	bottom: 45px;
+	bottom: 18px;
 }
 
 .mejs-captions-text {
 	padding: 3px 5px;
-	background: url(background.png);
-	background: rgba(20, 20, 20, 0.8);
+/*	background: url(background.png);
+	background: rgba(20, 20, 20, 0.8); */
 
 }
 /* End: TRACK (Captions and Chapters) */
