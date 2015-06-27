@@ -345,4 +345,3 @@ document.body.appendChild(downloadLink);
 	}
     });
 })(mejs.$);
-
