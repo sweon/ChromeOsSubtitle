@@ -5,7 +5,7 @@
 	    t = this;
 
 	    var helpPanel = $(
-		'<div class="me-window" style="color:#fff;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;width:360px;display: table; height: auto;background: url(background.png);background: rgba(50,50,50,0.7);border: solid 1px transparent;padding: 10px;overflow: hidden;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;font-size: 16px;visibility: hidden;">'+
+		'<div class="me-window" style="color:#fff;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;width:560px;display: table; height: auto;background: url(background.png);background: rgba(50,50,50,0.7);border: solid 1px transparent;padding: 10px;overflow: hidden;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;font-size: 16px;visibility: hidden;">'+
 		    '<h2>Help</h2>' +
 		    '<div>' +
 		    '<table style="color:#fff">' +
@@ -14,11 +14,19 @@
 		    '<td style="width:60px">down</td><td style="width:100px">volume down</td></tr>'+
 		    '<tr><td>left</td><td>rewind</td>'+
 		    '<td>right</td><td>forward</td></tr>'+
+            '<tr><td>,</td><td>long rewind</td>'+
+            '<td>.</td><td>long forward</td></tr>'+
+            '<tr><td>[</td><td>slow down -0.1x</td>'+
+            '<td>]</td><td>speed up +0.1x</td></tr>'+
+            '<tr><td>1, 2</td><td>set speed 1, 2x</td>'+
+            '<td>3 to 7</td><td>set speed 1.3 to 1.7x</td></tr>'+
+		    '<td>v</td><td>show control</td></tr>'+
 		    '<tr><td>i</td><td>info</td>'+
 		    '<td>s</td><td>settings</td></tr>'+
 		    '<tr><td>h</td><td>help</td></tr>'+
 		    '<tr><td>f</td><td>fullscreen</td></tr>'+
 		    '<tr><td>o</td><td>open video</td></tr>'+
+		    '<tr><td>c</td><td>toggle subtitle</td></tr>'+
 		    '<tr><td>d</td><td>download subtitle</td></tr>'+
 		    '<tr><td>-</td><td>decrease subtitle size</td>'+
 		    '<td>+</td><td>increase subtitle size</td></tr>'+
@@ -69,3 +77,4 @@
 	}
     });
 })(mejs.$);
+background : 배경, 원경, 바탕, 눈에 띄지 않는 곳, 이면
