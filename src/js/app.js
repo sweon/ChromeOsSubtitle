@@ -20,6 +20,7 @@ $('#player').mediaelementplayer({
     keyActions: [
 	{
 	    keys: [
+		13, // Enter
 		32, // SPACE
 		179 // GOOGLE play/pause button
 	    ],
@@ -29,11 +30,68 @@ $('#player').mediaelementplayer({
 		
 		if (media.paused || media.ended) {
 		    media.play();	
+            // player.startControlsTimer();
 		} else {
 		    media.pause();
 		}										
 	    }
 	},
+    {
+        keys: [221], // ]
+        action: function(player, media) {
+        var newPlaybackRate = media.playbackRate + 0.1;
+        media.playbackRate = newPlaybackRate;
+        }
+    },
+    {
+        keys: [219], // [
+        action: function(player, media) {
+        var newPlaybackRate = media.playbackRate - 0.1;
+        media.playbackRate = newPlaybackRate;
+        }
+    },
+    {
+        keys: [49], // 1
+        action: function(player, media) {
+        media.playbackRate = 1.0;
+        }
+    },
+    {
+        keys: [50], // 2
+        action: function(player, media) {
+        media.playbackRate = 2.0;
+        }
+    },
+    {
+        keys: [51], // 3
+        action: function(player, media) {
+        media.playbackRate = 1.3;
+        }
+    },
+    {
+        keys: [52], // 4
+        action: function(player, media) {
+        media.playbackRate = 1.4;
+        }
+    },
+    {
+        keys: [53], // 5
+        action: function(player, media) {
+        media.playbackRate = 1.5;
+        }
+    },
+    {
+        keys: [54], // 6
+        action: function(player, media) {
+        media.playbackRate = 1.6;
+        }
+    },
+    {
+        keys: [55], // 7
+        action: function(player, media) {
+        media.playbackRate = 1.7;
+        }
+    },
 	{
 	    keys: [38], // UP
 	    action: function(player, media) {
@@ -66,6 +124,23 @@ $('#player').mediaelementplayer({
 		}
 	    }
 	},
+    {
+        keys: [
+        188 // ,
+        ],
+        action: function(player, media) {
+        if (!isNaN(media.duration) && media.duration > 0) {
+            if (player.isVideo) {
+            player.showControls();
+            player.startControlsTimer();
+            }
+
+            // 5%
+            var newTime = Math.max(media.currentTime - player.options.defaultSeekBackwardIntervalBig(media), 0);
+            media.setCurrentTime(newTime);
+        }
+        }
+    },
 	{
 	    keys: [
 		39, // RIGHT
@@ -84,6 +159,23 @@ $('#player').mediaelementplayer({
 		}
 	    }
 	},
+    {
+        keys: [
+        190 // .
+        ],
+        action: function(player, media) {
+        if (!isNaN(media.duration) && media.duration > 0) {
+            if (player.isVideo) {
+            player.showControls();
+            player.startControlsTimer();
+            }
+
+            // 5%
+            var newTime = Math.min(media.currentTime + player.options.defaultSeekForwardIntervalBig(media), media.duration);
+            media.setCurrentTime(newTime);
+        }
+        }
+    },
 	{
 	    keys: [70], // f
 	    action: function(player, media) {
@@ -96,6 +188,18 @@ $('#player').mediaelementplayer({
 		}
 	    }
 	},
+    {
+        keys: [86], // O
+        action: function(player, media) {
+			if (player.options.alwaysShowControls == true) {
+				player.options.alwaysShowControls = false;
+				player.hideControls();
+			} else {
+				player.options.alwaysShowControls = true; 
+				player.showControls();
+			}
+        }
+    },
 	{
 	    keys: [79], // O
 	    action: function(player, media) {
@@ -152,6 +256,12 @@ $('#player').mediaelementplayer({
 		player.incCaptionDelay();
 	    }
 	},
+    {
+        keys: [67, 166],  // Escape
+        action: function(player, media) {
+        player.toggleCaption();
+        }
+    },
     ],
     success: function (mediaElement, domObject) { 
 	mainMediaElement = mediaElement;
