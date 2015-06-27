@@ -302,10 +302,19 @@ zip.workerScriptsPath = mediaelement_url + "lib/zip.js/WebContent/";
 	    },
 
 	    openSrtEntry: function(file) {
+
+		if (file.type.indexOf("video") >= 0) {
+			file.name = file.name.substr(0, file.name.lastIndexOf(".")) + ".srt";
+        $(document).trigger(
+            "subtitleFileOpened",
+            file.name
+        );
+		} else {
 		$(document).trigger(
 		    "subtitleFileOpened",
 		    file.name
 		);
+		}
 
 		var t = this;
 		$('#encoding-selector').val("UTF-8");
@@ -313,9 +322,7 @@ zip.workerScriptsPath = mediaelement_url + "lib/zip.js/WebContent/";
 		t.tracks = t.tracks.filter(function (el) {
 		    return el.srclang != 'fromfile';
 		});
-
-
-		t.tracks.push({
+t.tracks.push({
 		    srclang: 'fromfile',
 		    file: file,
 		    kind: 'subtitles',
