@@ -75,4 +75,3 @@ var OpenSubtitlesHash = function(file, onComplete){
     
 };
 
-
