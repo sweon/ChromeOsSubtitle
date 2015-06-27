@@ -5,7 +5,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
 	buildsource: function(player, controls, layers, media) {
 	    var 
 	    t = this,
-	    openFileInput = $('<input style="display:none" type="file" id="openfile_input"/>')
+	    openFileInput = $('<input style="display:none" type="file" multiple id="openfile_input"/>')
 		.appendTo(controls);
 	    t.openedFile = null;
 	    var open  = 
@@ -41,9 +41,16 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
 	    openFileInput.change(function (e) {
 		media.stop();
 		player.tracks = [];
-		var path = window.URL.createObjectURL(openFileInput[0].files[0]);
-		t.openedFile = openFileInput[0].files[0];
-		media.setSrc(path);
+        if (openFileInput[0].files[0].type.indexOf("subrip") >= 0) {
+            player.openSrtEntry(openFileInput[0].files[0]);
+		} else {
+			var path = window.URL.createObjectURL(openFileInput[0].files[0]);
+			t.openedFile = openFileInput[0].files[0];
+			media.setSrc(path);
+        	player.openSrtEntry(openFileInput[0].files[1]);
+			media.play();
+			media.pause();
+		}
 		return false;
 	    });
 	}
