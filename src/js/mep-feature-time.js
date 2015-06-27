@@ -11,7 +11,7 @@
 	$.extend(MediaElementPlayer.prototype, {
 		buildcurrent: function(player, controls, layers, media) {
 			var t = this;
-			
+
 			$('<div class="mejs-time">'+
 					'<span class="mejs-currenttime">' + (player.options.alwaysShowHours ? '00:' : '')
 					+ (player.options.showTimecodeFrameCount? '00:00:00':'00:00')+ '</span>'+
@@ -35,7 +35,7 @@
 						(t.options.duration > 0 ? 
 							mejs.Utility.secondsToTimeCode(t.options.duration, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25) :
 				   			((player.options.alwaysShowHours ? '00:' : '') + (player.options.showTimecodeFrameCount? '00:00:00':'00:00')) 
-				   		) + 
+				   		) +
 					'</span>')
 					.appendTo(controls.find('.mejs-time'));
 			} else {
@@ -48,7 +48,7 @@
 						(t.options.duration > 0 ? 
 							mejs.Utility.secondsToTimeCode(t.options.duration, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25) :
 				   			((player.options.alwaysShowHours ? '00:' : '') + (player.options.showTimecodeFrameCount? '00:00:00':'00:00')) 
-				   		) + 
+				   		) +
 					'</span>' +
 				'</div>')
 				.appendTo(controls);
@@ -64,8 +64,11 @@
 		updateCurrent:  function() {
 			var t = this;
 
+			var duration = mejs.Utility.secondsToTimeCode(t.media.duration)
+            var remaining = t.media.duration - t.media.currentTime
+
 			if (t.currenttime) {
-				t.currenttime.html(mejs.Utility.secondsToTimeCode(t.media.currentTime, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25));
+				t.currenttime.html(mejs.Utility.secondsToTimeCode(t.media.currentTime, t.options.alwaysShowHours || t.media.duration > 3600, t.options.showTimecodeFrameCount,  t.options.framesPerSecond || 25) + ' / -' + mejs.Utility.secondsToTimeCode(remaining) + ' / ' + duration + ' [-' + mejs.Utility.secondsToTimeCode(remaining/t.media.playbackRate)  + '/' + t.media.playbackRate.toFixed(1) + 'x]');
 			}
 		},
 		
