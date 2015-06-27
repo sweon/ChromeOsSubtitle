@@ -19,19 +19,30 @@
 
 	// default amount to move back when back key is pressed		
 	defaultSeekBackwardInterval: function(media) {
-	    return (media.duration * 0.05);
+	    // return (media.duration * 0.05);
+	    return (15);
 	},		
+    defaultSeekBackwardIntervalBig: function(media) {
+        // return (media.duration * 0.05);
+        return (60);
+    },
 	// default amount to move forward when forward key is pressed				
 	defaultSeekForwardInterval: function(media) {
-	    return (media.duration * 0.05);
+	    // return (media.duration * 0.05);
+	    return (15);
 	},		
+    // default amount to move forward when forward key is pressed               
+    defaultSeekForwardIntervalBig: function(media) {
+        // return (media.duration * 0.05);
+        return (60);
+    },
 	
 	// width of audio player
 	audioWidth: -1,
 	// height of audio player
 	audioHeight: -1,		
 	// initial volume when the player starts (overrided by user cookie)
-	startVolume: 0.8,
+	startVolume: 1.0,
 	// useful for <audio> player loops
 	loop: false,
 	// rewind to beginning when media ends
@@ -52,8 +63,8 @@
 	alwaysShowControls: false,
 	// Display the video control
 	hideVideoControlsOnLoad: false,
-        // Enable click video element to toggle play/pause
-        clickToPlayPause: true,
+    // Enable click video element to toggle play/pause
+    clickToPlayPause: true,
 	// force iPad's native controls
 	iPadUseNativeControls: false,
 	// force iPhone's native controls
@@ -75,6 +86,7 @@
 	keyActions: [
 	    {
 		keys: [
+		    13, // Enter
 		    32, // SPACE
 		    179 // GOOGLE play/pause button
 		],
@@ -84,6 +96,7 @@
 
 		    if (media.paused || media.ended) {
 			media.play();	
+			/* player.startControlsTimer(); */
 		    } else {
 			media.pause();
 		    }										
@@ -147,6 +160,7 @@
 			    player.exitFullScreen();
 			} else {
 			    player.enterFullScreen();
+			    /* player.startControlsTimer(); */
 			}
 		    }
 		}
@@ -206,6 +220,8 @@
 	hasFocus: false,
 	
 	controlsAreVisible: true,
+
+	captionVisible: true,
 	
 	init: function() {
 
@@ -350,6 +366,7 @@
 		if (t.options.clickToPlayPause) {
 		    if (t.media.paused) {
 			t.media.play();
+			// player.startControlsTimer();
 		    } else {
 			t.media.pause();
 		    }
@@ -901,16 +918,16 @@
 	    // this needs to come last so it's on top
 	    bigPlay = 
 		$('<div class="mejs-overlay mejs-layer mejs-overlay-play">'+
-		  '<div class="mejs-overlay-button"></div>'+
+//		  '<div class="mejs-overlay-button"></div>'+
 		  '</div>')
-		.appendTo(layers)
+		// .appendTo(layers)
 		.click(function() {
   		    if (t.media.readyState != 4)
 			return;
-
                     if (t.options.clickToPlayPause) {
                         if (media.paused) {
                             media.play();
+                            // player.startControlsTimer();
                         } else {
                             media.pause();
                         }
