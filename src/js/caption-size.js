@@ -33,6 +33,24 @@
 		updateCaptionSize(Number(t.capSizeInput.value));
 	    }
 
+        t.toggleCaption = function() {
+		if (t.captionVisible) {
+	        $('.mejs-captions-layer').css({
+   	         "visibility":function( index, oldValue ) {
+				t.captionVisible = false
+				return "hidden";
+			}
+   	        });
+			} else {
+            $('.mejs-captions-layer').css({
+             "visibility":function( index, oldValue ) {
+			t.captionVisible = true
+             return "visible";
+			}
+   	        });
+			}
+        }
+
 	    // create the buttons
 	    var dec =
 		$('<div class="mejs-button mejs-reduce-button mejs-reduce" >' +
