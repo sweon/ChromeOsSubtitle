@@ -326,7 +326,7 @@ var openSubsLang = [
 		    clearTimeout(t.subtitleBannerTimer);
 		    delete t.subtitleBannerTimer;
 		    t.subtitleBannerTimer = null;
-		}, 10000);
+		}, 1500);
 	    });
 
 
@@ -413,4 +413,3 @@ var openSubsLang = [
 	}
     });
 })(mejs.$);
-
