@@ -22,6 +22,10 @@
 	    // return (media.duration * 0.05);
 	    return (15);
 	},		
+    defaultSeekBackwardIntervalSmall: function(media) {
+        // return (media.duration * 0.05);
+        return (5);
+    },
     defaultSeekBackwardIntervalBig: function(media) {
         // return (media.duration * 0.05);
         return (60);
@@ -31,6 +35,10 @@
 	    // return (media.duration * 0.05);
 	    return (15);
 	},		
+    defaultSeekForwardIntervalSmall: function(media) {
+        // return (media.duration * 0.05);
+        return (5);
+    },
     // default amount to move forward when forward key is pressed               
     defaultSeekForwardIntervalBig: function(media) {
         // return (media.duration * 0.05);
