@@ -126,6 +126,23 @@ $('#player').mediaelementplayer({
 	},
     {
         keys: [
+        57 // 9
+        ],
+        action: function(player, media) {
+        if (!isNaN(media.duration) && media.duration > 0) {
+            if (player.isVideo) {
+            player.showControls();
+            player.startControlsTimer();
+            }
+
+            // 5%
+            var newTime = Math.max(media.currentTime - player.options.defaultSeekBackwardIntervalSmall(media), 0);
+            media.setCurrentTime(newTime);
+        }
+        }
+    },
+    {
+        keys: [
         188 // ,
         ],
         action: function(player, media) {
@@ -159,6 +176,23 @@ $('#player').mediaelementplayer({
 		}
 	    }
 	},
+    {
+        keys: [
+        48 // 0
+        ],
+        action: function(player, media) {
+        if (!isNaN(media.duration) && media.duration > 0) {
+            if (player.isVideo) {
+            player.showControls();
+            player.startControlsTimer();
+            }
+
+            // 5%
+            var newTime = Math.min(media.currentTime + player.options.defaultSeekForwardIntervalSmall(media), media.duration);
+            media.setCurrentTime(newTime);
+        }
+        }
+    },
     {
         keys: [
         190 // .
