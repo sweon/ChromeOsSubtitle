@@ -14,6 +14,8 @@
 		    '<td style="width:60px">down</td><td style="width:100px">volume down</td></tr>'+
 		    '<tr><td>left</td><td>rewind</td>'+
 		    '<td>right</td><td>forward</td></tr>'+
+            '<tr><td>9</td><td>short rewind</td>'+
+            '<td>0</td><td>short forward</td></tr>'+
             '<tr><td>,</td><td>long rewind</td>'+
             '<td>.</td><td>long forward</td></tr>'+
             '<tr><td>[</td><td>slow down -0.1x</td>'+
