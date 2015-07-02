@@ -291,7 +291,7 @@ $('#player').mediaelementplayer({
 	    }
 	},
     {
-        keys: [67, 166],  // Escape
+        keys: [67, 166],  // c, back
         action: function(player, media) {
         player.toggleCaption();
         }
