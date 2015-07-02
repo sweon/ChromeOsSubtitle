@@ -115,7 +115,9 @@ $('#player').mediaelementplayer({
 		if (!isNaN(media.duration) && media.duration > 0) {
 		    if (player.isVideo) {
 			player.showControls();
-			player.startControlsTimer();
+		            if (player.options.alwaysShowControls == false) {
+		                player.startControlsTimer();
+		            }
 		    }
 		    
 		    // 5%
@@ -132,7 +134,9 @@ $('#player').mediaelementplayer({
         if (!isNaN(media.duration) && media.duration > 0) {
             if (player.isVideo) {
             player.showControls();
-            player.startControlsTimer();
+            if (player.options.alwaysShowControls == false) {
+                player.startControlsTimer();
+            }
             }
 
             // 5%
@@ -149,7 +153,9 @@ $('#player').mediaelementplayer({
         if (!isNaN(media.duration) && media.duration > 0) {
             if (player.isVideo) {
             player.showControls();
-            player.startControlsTimer();
+            if (player.options.alwaysShowControls == false) {
+                player.startControlsTimer();
+            }
             }
 
             // 5%
@@ -167,7 +173,9 @@ $('#player').mediaelementplayer({
 		if (!isNaN(media.duration) && media.duration > 0) {
 		    if (player.isVideo) {
 			player.showControls();
-			player.startControlsTimer();
+	            if (player.options.alwaysShowControls == false) {
+	                player.startControlsTimer();
+	            }
 		    }
 		    
 		    // 5%
@@ -184,7 +192,9 @@ $('#player').mediaelementplayer({
         if (!isNaN(media.duration) && media.duration > 0) {
             if (player.isVideo) {
             player.showControls();
-            player.startControlsTimer();
+            if (player.options.alwaysShowControls == false) {
+                player.startControlsTimer();
+            }
             }
 
             // 5%
@@ -201,7 +211,9 @@ $('#player').mediaelementplayer({
         if (!isNaN(media.duration) && media.duration > 0) {
             if (player.isVideo) {
             player.showControls();
-            player.startControlsTimer();
+            if (player.options.alwaysShowControls == false) {
+                player.startControlsTimer();
+            }
             }
 
             // 5%
