@@ -410,7 +410,10 @@
 		t.container.find('.mejs-control')
 		    .css('visibility','visible')
 		    .stop(true, true).fadeIn(200, function() {t.controlsAreVisible = true;});	
-		
+
+	        t.container.find('#player')
+	            .css('cursor','default');
+
 	    } else {
 		t.controls
 		    .css('visibility','visible')
@@ -454,6 +457,10 @@
 			.css('visibility','hidden')
 			.css('display','block');
 		});	
+
+	        t.container.find('#player')
+	            .css('cursor','none');
+
 	    } else {
 		
 		// hide main controls
