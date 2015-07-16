@@ -35,6 +35,7 @@
 
 		    var path = window.URL.createObjectURL(draggedVideo);
 		    mainMediaElement.setSrc(path);
+		    window.history.pushState(null, null, "#"+t.openedFile.name);
 		}
 		player.tracks = [];
 		if (draggedSrt != null) {
