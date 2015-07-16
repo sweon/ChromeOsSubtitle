@@ -47,7 +47,8 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
 			var path = window.URL.createObjectURL(openFileInput[0].files[0]);
 			t.openedFile = openFileInput[0].files[0];
 			media.setSrc(path);
-        	player.openSrtEntry(openFileInput[0].files[1]);
+			window.history.pushState(null, null, "#"+t.openedFile.name);
+			player.openSrtEntry(openFileInput[0].files[1]);
 			media.play();
 			media.pause();
 		}
