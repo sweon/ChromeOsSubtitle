@@ -51,6 +51,9 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
 			player.openSrtEntry(openFileInput[0].files[1]);
 			media.play();
 			media.pause();
+			if (player.options.alwaysShowControls == false) {
+				player.startControlsTimer();	            
+			}
 		}
 		return false;
 	    });
