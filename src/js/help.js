@@ -26,10 +26,14 @@
 		    '<tr><td>i</td><td>info</td>'+
 		    '<td>s</td><td>settings</td></tr>'+
 		    '<tr><td>h</td><td>help</td></tr>'+
-		    '<tr><td>f</td><td>fullscreen</td></tr>'+
-		    '<tr><td>o</td><td>open video</td></tr>'+
-		    '<tr><td>c</td><td>toggle subtitle</td></tr>'+
-		    '<tr><td>d</td><td>download subtitle</td></tr>'+
+	            '<tr><td>f</td><td>fullscreen</td>'+
+	            '<td>j</td><td>subtitle margin -10px</td></tr>'+
+	            '<tr><td>o</td><td>open video</td>'+
+	            '<td>k</td><td>subtitle margin +10px</td></tr>'+
+	            '<tr><td>c</td><td>toggle subtitle</td>'+
+	            '<td>;</td><td>subtitle margin -100px</td></tr>'+
+	            '<tr><td>d</td><td>download subtitle</td>'+
+	            '<td>&#39;</td><td>subtitle margin +100px</td></tr>'+
 		    '<tr><td>-</td><td>decrease subtitle size</td>'+
 		    '<td>+</td><td>increase subtitle size</td></tr>'+
 		    '<tr><td>z</td><td>decrease subtitle delay</td>'+
