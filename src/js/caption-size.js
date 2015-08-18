@@ -33,6 +33,19 @@
 		updateCaptionSize(Number(t.capSizeInput.value));
 	    }
 
+        t.decCaptionMargin = function() {
+            $('.mejs-captions-layer').css("bottom", "-=10");
+        }
+        t.incCaptionMargin = function() {
+            $('.mejs-captions-layer').css("bottom", "+=10");
+        }
+        t.decCaptionMarginBig = function() {
+            $('.mejs-captions-layer').css("bottom", "-=100");
+        }
+        t.incCaptionMarginBig = function() {
+            $('.mejs-captions-layer').css("bottom", "+=100");
+        }
+
         t.toggleCaption = function() {
 		if (t.captionVisible) {
 	        $('.mejs-captions-layer').css({
