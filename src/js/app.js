@@ -290,6 +290,30 @@ $('#player').mediaelementplayer({
 		player.incCaptionSize();
 	    }
 	},
+	    {
+	        keys: [74],  // j
+	        action: function(player, media) {
+	        player.decCaptionMargin();
+	        }
+	    },
+	    {
+	        keys: [75],  // k
+	        action: function(player, media) {
+	        player.incCaptionMargin();
+	        }
+	    },
+	    {
+	        keys: [186],  // ;
+	        action: function(player, media) {
+	        player.decCaptionMarginBig();
+	        }
+	    },
+	    {
+	        keys: [222],  // '
+	        action: function(player, media) {
+	        player.incCaptionMarginBig();
+	        }
+	    },
 	{
 	    keys: [90],  // z
 	    action: function(player, media) {
