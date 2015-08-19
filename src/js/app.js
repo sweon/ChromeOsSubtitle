@@ -319,6 +319,7 @@ $('#player').mediaelementplayer({
 	            action: function(player, media) {
 	            $('.mejs-captions-layer').css("bottom", "18");
 	            }
+	        },
 	{
 	    keys: [90],  // z
 	    action: function(player, media) {
