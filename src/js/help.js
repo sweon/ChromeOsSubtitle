@@ -25,7 +25,8 @@
 		    '<td>v</td><td>show control</td></tr>'+
 		    '<tr><td>i</td><td>info</td>'+
 		    '<td>s</td><td>settings</td></tr>'+
-		    '<tr><td>h</td><td>help</td></tr>'+
+            	'<tr><td>h</td><td>help</td>'+
+            	'<td>l</td><td>default subtitle margin</td></tr>'+
 	            '<tr><td>f</td><td>fullscreen</td>'+
 	            '<td>j</td><td>subtitle margin -10px</td></tr>'+
 	            '<tr><td>o</td><td>open video</td>'+
