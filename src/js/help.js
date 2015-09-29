@@ -8,10 +8,10 @@
                 '<div class="me-window" style="color:#fff;margin: auto;position: absolute;top: 0; left: 0; bottom: 0; right: 0;width:560px;display: table; height: auto;background: url(background.png);background: rgba(50,50,50,0.7);border: solid 1px transparent;padding: 10px;overflow: hidden;-webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0;font-size: 16px;visibility: hidden;">'+
                 '<h2>Help</h2>' +
                 '<div>' +
-                '<table style="color:#fff">' +
-                '<tr><td style="width:60px">space</td><td style="width:100px">play/pause</td></tr>'+
-                '<tr><td>up</td><td>volume up</td>'+
-                '<td style="width:60px">down</td><td style="width:100px">volume down</td></tr>'+
+                '<table style="color:#fff; font-size:16px">' +
+                '<tr><td style="width:60px">space</td><td style="width:210px">play/pause</td></tr>'+
+                '<tr><td>up</td><td style="width:210px">volume up</td>'+
+                '<td style="width:60px">down</td><td style="width:210px">volume down</td></tr>'+
                 '<tr><td>left</td><td>rewind</td>'+
                 '<td>right</td><td>forward</td></tr>'+
                 '<tr><td>9</td><td>short rewind</td>'+
@@ -35,7 +35,7 @@
                 '<td>;</td><td>subtitle margin -100px</td></tr>'+
                 '<tr><td>d</td><td>download subtitle</td>'+
                 '<td>&#39;</td><td>subtitle margin +100px</td></tr>'+
-                '<tr><td>u</td><td>shrink for subtitle</td>'+
+                '<tr><td>u</td><td>shrink video for subtitle</td>'+
                 '<td>y</td><td>restore video size</td></tr>'+
                 '<tr><td>-</td><td>decrease subtitle size</td>'+
                 '<td>+</td><td>increase subtitle size</td></tr>'+
