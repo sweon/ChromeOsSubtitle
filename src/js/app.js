@@ -350,6 +350,12 @@ $('#player').mediaelementplayer({
                 player.toggleCaption();
             }
         },
+        {
+            keys: [77],  // m
+            action: function(player, media) {
+                player.toggleCaptionMultiLine();
+            }
+        },
     ],
     success: function (mediaElement, domObject) { 
         mainMediaElement = mediaElement;
