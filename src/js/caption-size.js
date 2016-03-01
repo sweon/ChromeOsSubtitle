@@ -64,6 +64,18 @@
 			}
         }
 
+        t.toggleCaptionMultiLine = function() {
+            if (t.captionMultiLine) {
+                t.captionMultiLine = false;
+            } else {
+                t.captionMultiLine = true;
+            }
+            if (media.paused) {
+                media.play();
+                media.pause();
+            }
+        }
+
 	    // create the buttons
 	    var dec =
 		$('<div class="mejs-button mejs-reduce-button mejs-reduce" >' +
