@@ -230,6 +230,7 @@
 	controlsAreVisible: true,
 
 	captionVisible: true,
+	captionMultiLine: false,
 	
 	init: function() {
 
