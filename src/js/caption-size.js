@@ -67,12 +67,28 @@
         t.toggleCaptionMultiLine = function() {
             if (t.captionMultiLine) {
                 t.captionMultiLine = false;
+                player.hideControls();
+                $('.mejs-container-fullscreen video').css("width", "100%");
+                $('.mejs-captions-layer').css("margin-left", "0%");
+                $('.mejs-captions-layer').css("text-align", "center");
+                $('.mejs-captions-layer').css("font-size", $("#defaultSubSize")[0].value);
+                $('.mejs-captions-position').css("width", "100%");
+                t.hideControls();
             } else {
                 t.captionMultiLine = true;
+                $('.mejs-container-fullscreen video').css("width", "75%");
+                $('.mejs-captions-layer').css("margin-left", "75.5%");
+                $('.mejs-captions-layer').css("text-align", "left");
+                $('.mejs-captions-layer').css("font-size", "16px");
+                $('.mejs-captions-position').css("width", "24.5%");
+                t.showControls();
             }
             if (media.paused) {
                 media.play();
                 media.pause();
+                if (t.captionMultiLine) {
+                    t.showControls();
+                }
             }
         }
 
