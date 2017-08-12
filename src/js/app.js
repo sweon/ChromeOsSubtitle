@@ -11,6 +11,43 @@ features.push('opensubtitle');
 if (packaged_app)
     features.push('autosrt');
 
+$(document).keyup(function(e) {
+    if (e.which == 179) {
+        if (player.readyState != 4)
+            return;
+        if (player.paused || player.ended) {
+            player.play();
+            // player.startControlsTimer();
+        } else {
+            player.pause();
+        }
+    } else if (e.which == 177) {
+        if (!isNaN(player.duration) && player.duration > 0) {
+            if (mejs.isVideo) {
+                mejs.showControls();
+                if (mejs.options.alwaysShowControls == false) {
+                    mejs.startControlsTimer();
+                }
+            }
+
+            var newTime = Math.max(player.currentTime - mejs.MepDefaults.defaultSeekBackwardInterval(player), 0);
+            player.setCurrentTime(newTime);
+        }
+    } else if (e.which == 176) {
+        if (!isNaN(player.duration) && player.duration > 0) {
+            if (mejs.isVideo) {
+                mejs.showControls();
+                if (mejs.options.alwaysShowControls == false) {
+                    mejs.startControlsTimer();
+                }
+            }
+
+            var newTime = Math.min(player.currentTime + mejs.MepDefaults.defaultSeekForwardInterval(player), player.duration);
+            player.setCurrentTime(newTime);
+        }
+    }
+});
+
 $('#player').mediaelementplayer({
     startLanguage:'en',
     isVideo:true,
