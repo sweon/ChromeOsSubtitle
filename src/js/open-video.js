@@ -46,6 +46,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                 } else {
                     var path = window.URL.createObjectURL(openFileInput[0].files[0]);
                     t.openedFile = openFileInput[0].files[0];
+                    document.title = t.openedFile.name;
                     media.setSrc(path);
                     player.openSrtEntry(openFileInput[0].files[1]);
                     media.play();
@@ -53,7 +54,6 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                     if (player.options.alwaysShowControls == false) {
                         player.startControlsTimer();	            
                     };
-                    document.title = t.openedFile.name;
                 }
                 return false;
             });
