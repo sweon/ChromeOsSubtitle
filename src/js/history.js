@@ -35,24 +35,26 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
         history.html(historyFiles);
 
         history.find("a").click(function (e) {
-            player.history[document.title].currentTime = media.currentTime;
-            var currentTime = this.getAttribute('data-currentTime');
-            var playbackRate = media.playbackRate;
-            t.openedFile = this.innerText;
-            media.setSrc(this.href);
-            var srtFile = srtFiles[this.innerText];
-            if (srtFile) {
-                player.openSrtEntry(srtFile);
-                $('.mejs-captions-layer').css('visibility','visible');
-            } else {
-                $('.mejs-captions-layer').css('visibility','hidden');
+            if (document.title != this.innerText) {
+                player.history[document.title].currentTime = media.currentTime;
+                var currentTime = this.getAttribute('data-currentTime');
+                var playbackRate = media.playbackRate;
+                t.openedFile = this.innerText;
+                media.setSrc(this.href);
+                var srtFile = srtFiles[this.innerText];
+                if (srtFile) {
+                    player.openSrtEntry(srtFile);
+                    $('.mejs-captions-layer').css('visibility','visible');
+                } else {
+                    $('.mejs-captions-layer').css('visibility','hidden');
+                }
+                media.setCurrentTime(currentTime);
+                media.playbackRate = playbackRate;
+                if (player.options.alwaysShowControls == false) {
+                    player.startControlsTimer();                
+                };
+                document.title = t.openedFile;
             }
-            media.setCurrentTime(currentTime);
-            media.playbackRate = playbackRate;
-            if (player.options.alwaysShowControls == false) {
-                player.startControlsTimer();                
-            };
-            document.title = t.openedFile;
         });
 
 		$('.me-window').css('visibility','hidden');
