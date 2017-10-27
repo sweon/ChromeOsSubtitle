@@ -39,6 +39,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                 return false;
             });
             openFileInput.change(function (e) {
+            if (openFileInput[0].files[0]) {
                 media.stop();
                 var prevTitle = document.title;
                 var prevTime = media.currentTime;
@@ -55,8 +56,6 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                         player.openSrtEntry(openFileInput[0].files[1]);
                         var srtFile = openFileInput[0].files[1];
                     }
-                    media.play();
-                    media.pause();
                     if (player.options.alwaysShowControls == false) {
                         player.startControlsTimer();	            
                     };
@@ -67,6 +66,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                     player.history[document.title] = {"path": path, "srtFile": srtFile, "currentTime": 0, "file":document.title};
                     return false;
                 }
+            }
             });
         }
     });
