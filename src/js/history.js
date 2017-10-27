@@ -41,7 +41,12 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
             t.openedFile = this.innerText;
             media.setSrc(this.href);
             var srtFile = srtFiles[this.innerText];
-            player.openSrtEntry(srtFile);
+            if (srtFile) {
+                player.openSrtEntry(srtFile);
+                $('.mejs-captions-layer').css('visibility','visible');
+            } else {
+                $('.mejs-captions-layer').css('visibility','hidden');
+            }
             media.setCurrentTime(currentTime);
             media.playbackRate = playbackRate;
             // media.play();
