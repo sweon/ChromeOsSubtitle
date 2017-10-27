@@ -303,6 +303,8 @@ zip.workerScriptsPath = mediaelement_url + "lib/zip.js/WebContent/";
 
 	    openSrtEntry: function(file) {
 
+        $('.mejs-captions-layer').css('visibility','visible');
+
 		if (file.type.indexOf("video") >= 0) {
 			file.name = file.name.substr(0, file.name.lastIndexOf(".")) + ".srt";
         $(document).trigger(
