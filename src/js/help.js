@@ -42,7 +42,7 @@
                 '<tr><td>z</td><td>decrease subtitle delay</td>'+
                 '<td>x</td><td>increase subtitle delay</td></tr>'+
                 '<tr><td>m</td><td>toggle multi-line subtitle</td>'+
-                '<td></td><td></td></tr>'+
+                '<td>p</td><td>history</td></tr>'+
                 '</table>'+
                 '</div><br/>' +
                 '[Click outside the box to close the help page]</div>'
