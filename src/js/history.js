@@ -49,15 +49,10 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
             }
             media.setCurrentTime(currentTime);
             media.playbackRate = playbackRate;
-            // media.play();
-            // media.pause();
             if (player.options.alwaysShowControls == false) {
                 player.startControlsTimer();                
             };
             document.title = t.openedFile;
-
-            // event.stopPropagation();
-            // return false;
         });
 
 		$('.me-window').css('visibility','hidden');
