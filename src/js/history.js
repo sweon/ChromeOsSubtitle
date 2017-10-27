@@ -37,11 +37,13 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
         history.find("a").click(function (e) {
             player.history[document.title].currentTime = media.currentTime;
             var currentTime = this.getAttribute('data-currentTime');
+            var playbackRate = media.playbackRate;
             t.openedFile = this.innerText;
             media.setSrc(this.href);
             var srtFile = srtFiles[this.innerText];
             player.openSrtEntry(srtFile);
             media.setCurrentTime(currentTime);
+            media.playbackRate = playbackRate;
             // media.play();
             // media.pause();
             if (player.options.alwaysShowControls == false) {
