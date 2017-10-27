@@ -45,6 +45,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                 player.tracks = [];
                 if (openFileInput[0].files[0].type.indexOf("subrip") >= 0) {
                     player.openSrtEntry(openFileInput[0].files[0]);
+                    player.history[document.title].srtFile = openFileInput[0].files[0];
                 } else {
                     var path = window.URL.createObjectURL(openFileInput[0].files[0]);
                     t.openedFile = openFileInput[0].files[0];
@@ -64,14 +65,9 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                         player.history[prevTitle].currentTime = prevTime;
                     }
                     player.history[document.title] = {"path": path, "srtFile": srtFile, "currentTime": 0, "file":document.title};
+                    return false;
                 }
-                return false;
             });
-            // player.getHistory = function () {
-            //     player.history.forEach(function(file) {
-            //         prompt(file.file);
-            //     });
-            // };            
         }
     });
 })(mejs.$);
