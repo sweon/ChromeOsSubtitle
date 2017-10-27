@@ -40,23 +40,41 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
             });
             openFileInput.change(function (e) {
                 media.stop();
+                var prevTitle = document.title;
+                var prevTime = media.currentTime;
                 player.tracks = [];
                 if (openFileInput[0].files[0].type.indexOf("subrip") >= 0) {
                     player.openSrtEntry(openFileInput[0].files[0]);
                 } else {
                     var path = window.URL.createObjectURL(openFileInput[0].files[0]);
                     t.openedFile = openFileInput[0].files[0];
-                    document.title = t.openedFile.name;
                     media.setSrc(path);
-                    player.openSrtEntry(openFileInput[0].files[1]);
+                    document.title = t.openedFile.name;
+                    if (openFileInput[0].files[1]) {
+                        player.openSrtEntry(openFileInput[0].files[1]);
+                        // var srtPath = window.URL.createObjectURL(openFileInput[0].files[1]);
+                        var srtFile = openFileInput[0].files[1];
+                    } else {
+                        player.openSrtEntry(openFileInput[0].files[0]);
+                    }
                     media.play();
                     media.pause();
                     if (player.options.alwaysShowControls == false) {
                         player.startControlsTimer();	            
                     };
+                    player.history = player.history || {};
+                    if (prevTitle != "Subtitle Videoplayer") {
+                        player.history[prevTitle].currentTime = prevTime;
+                    }
+                    player.history[document.title] = {"path": path, "srtFile": srtFile, "currentTime": 0, "file":document.title};
                 }
                 return false;
             });
+            // player.getHistory = function () {
+            //     player.history.forEach(function(file) {
+            //         prompt(file.file);
+            //     });
+            // };            
         }
     });
 })(mejs.$);
