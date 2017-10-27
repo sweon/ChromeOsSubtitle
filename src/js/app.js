@@ -6,7 +6,7 @@ var mainMediaElement = null;
 
 $('#main').append('<video id="player" controls="controls"></video>');
 
-var features = ['source', 'settings','playpause','progress','current','duration', 'tracks','subdelay', 'subsize', 'volume', 'settingsbutton', 'info', 'help', 'fullscreen', 'drop', 'stats'];
+var features = ['source', 'settings','playpause','progress','current','duration', 'tracks','subdelay', 'subsize', 'volume', 'settingsbutton', 'info', 'help', 'history', 'fullscreen', 'drop', 'stats'];
 features.push('opensubtitle');
 if (packaged_app)
     features.push('autosrt');
@@ -15,6 +15,7 @@ $(document).keyup(function(e) {
     if (e.which == 179) {
         if (player.readyState != 4)
             return;
+
         if (player.paused || player.ended) {
             player.play();
             // player.startControlsTimer();
@@ -30,6 +31,7 @@ $(document).keyup(function(e) {
                 }
             }
 
+            // 5%
             var newTime = Math.max(player.currentTime - mejs.MepDefaults.defaultSeekBackwardInterval(player), 0);
             player.setCurrentTime(newTime);
         }
@@ -42,8 +44,32 @@ $(document).keyup(function(e) {
                 }
             }
 
+            // 5%
             var newTime = Math.min(player.currentTime + mejs.MepDefaults.defaultSeekForwardInterval(player), player.duration);
             player.setCurrentTime(newTime);
+        }
+    } else if (e.which == 178) {
+        if (player.captionVisible) {
+            $('.mejs-captions-layer').css({
+             "visibility":function( index, oldValue ) {
+                player.captionVisible = false
+                return "hidden";
+            }
+        });
+        } else {
+            $('.mejs-captions-layer').css({
+             "visibility":function( index, oldValue ) {
+                player.captionVisible = true
+                return "visible";
+            }
+        });
+        }
+    } else if (e.which == 173) {
+	console.log(mejs.MediaFeatures.isFullScreen());
+        if (mejs.MediaFeatures.isFullScreen()) {
+            mejs.exitFullScreen();
+        } else {
+            mejs.enterFullScreen();
         }
     }
 });
@@ -66,7 +92,7 @@ $('#player').mediaelementplayer({
                     return;
 
                 if (media.paused || media.ended) {
-                    media.play();	
+                    media.play();
                     // player.startControlsTimer();
                 } else {
                     media.pause();
@@ -141,20 +167,20 @@ $('#player').mediaelementplayer({
                 media.playbackRate = 1.7;
             }
         },
-        {
-            keys: [38], // UP
-            action: function(player, media) {
-                var newVolume = Math.min(media.volume + 0.1, 1);
-                media.setVolume(newVolume);
-            }
-        },
-        {
-            keys: [40], // DOWN
-            action: function(player, media) {
-                var newVolume = Math.max(media.volume - 0.1, 0);
-                media.setVolume(newVolume);
-            }
-        },
+//        {
+//            keys: [38], // UP
+//            action: function(player, media) {
+//                var newVolume = Math.min(media.volume + 0.1, 1);
+//                media.setVolume(newVolume);
+//            }
+//        },
+//        {
+//            keys: [40], // DOWN
+//            action: function(player, media) {
+//                var newVolume = Math.max(media.volume - 0.1, 0);
+//                media.setVolume(newVolume);
+//            }
+//        },
         {
             keys: [
                 37, // LEFT
@@ -177,7 +203,7 @@ $('#player').mediaelementplayer({
         },
         {
             keys: [
-                57 // 9
+                57, 27, 116 // 9
             ],
             action: function(player, media) {
                 if (!isNaN(media.duration) && media.duration > 0) {
@@ -235,7 +261,7 @@ $('#player').mediaelementplayer({
         },
         {
             keys: [
-                48 // 0
+                48, 66 // 0
             ],
             action: function(player, media) {
                 if (!isNaN(media.duration) && media.duration > 0) {
@@ -302,6 +328,12 @@ $('#player').mediaelementplayer({
             }
         },
         {
+            keys: [80],  // P
+            action: function(player, media) {
+                player.openHistoryWindow();
+            }
+        },
+        {
             keys: [68],  // D
             action: function(player, media) {
                 if (!player.openedFile)
@@ -340,13 +372,13 @@ $('#player').mediaelementplayer({
             }
         },
         {
-            keys: [74],  // j
+            keys: [40, 74],  // j
             action: function(player, media) {
                 player.decCaptionMargin();
             }
         },
         {
-            keys: [75],  // k
+            keys: [38, 75],  // k
             action: function(player, media) {
                 player.incCaptionMargin();
             }
@@ -382,13 +414,13 @@ $('#player').mediaelementplayer({
             }
         },
         {
-            keys: [67, 166],  // c, back
+            keys: [67, 166, 33],  // c, back
             action: function(player, media) {
                 player.toggleCaption();
             }
         },
         {
-            keys: [77],  // m
+            keys: [77, 112, 34],  // m
             action: function(player, media) {
                 player.toggleCaptionMultiLine();
             }
