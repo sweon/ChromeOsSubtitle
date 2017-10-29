@@ -67,9 +67,12 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
 	    };
 
         var open  = 
-            $('<div class="mejs-button mejs-history-button mejs-history" >' +
-              '<button type="button" aria-controls="' + t.id + '" title="' + mejs.i18n.t('Open video...') + '" aria-label="' + mejs.i18n.t('Open history...') + '"></button>' +
+            $('<div class="mejs-button mejs-backlight-on mejs-history" >' +
+              '<button type="button" aria-controls="' + t.id + '" title="' + mejs.i18n.t('Open history...') + '" aria-label="' + mejs.i18n.t('Open history...') + '"></button>' +
               '</div>')
+            // $('<div class="mejs-button mejs-history-button mejs-history" >' +
+            //   '<button type="button" aria-controls="' + t.id + '" title="' + mejs.i18n.t('Open video...') + '" aria-label="' + mejs.i18n.t('Open history...') + '"></button>' +
+            //   '</div>')
         .prependTo(controls)
         .click(function(e) {
             e.preventDefault();
