@@ -13,6 +13,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                   '<button type="button" aria-controls="' + t.id + '" title="' + mejs.i18n.t('Open video...') + '" aria-label="' + mejs.i18n.t('Open video...') + '"></button>' +
                   '</div>')
             .appendTo(controls);
+            var fileInputFormOpened = fileInputFormOpened || false;
             player.openFileForm = function () {
                 if (packaged_app) {
                     chrome.fileSystem.chooseEntry({
@@ -20,7 +21,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                     }, function (entry) {
                         entry.file(function fff(file) {
                             media.stop();
-                            player.tracks = [];			    
+                            player.tracks = [];             
                             var path = window.URL.createObjectURL(file);
                             t.openedFile = file;
                             t.openedFileEntry = entry;
@@ -31,6 +32,10 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                 }
                 else {
                     openFileInput[0].click();
+                    if (!fileInputFormOpened) {
+                        openFileInput[0].click();
+                        fileInputFormOpened = true;
+                    }
                 }
             };
             open.click(function(e) {
@@ -52,13 +57,15 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                     var path = window.URL.createObjectURL(openFileInput[0].files[0]);
                     t.openedFile = openFileInput[0].files[0];
                     media.setSrc(path);
+                    media.play();
+                    media.stop();
                     document.title = t.openedFile.name;
                     if (openFileInput[0].files[1]) {
                         player.openSrtEntry(openFileInput[0].files[1]);
                         var srtFile = openFileInput[0].files[1];
                     }
                     if (player.options.alwaysShowControls == false) {
-                        player.startControlsTimer();	            
+                        player.startControlsTimer();                
                     };
                     player.history = player.history || {};
                     if (prevTitle != "Subtitle Videoplayer") {
