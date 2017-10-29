@@ -28,7 +28,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
         for (var key in player.history) {
             var file = player.history[key];
             srtFiles[key] = file.srtFile;
-            historyFiles = historyFiles + '<li><a href="' + file.path + '" data-currentTime="' + file.currentTime + '" style="text-decoration: none;">' + file.file + '</li>';
+            historyFiles = historyFiles + '<li><a href="' + file.path + '" data-currentTime="' + file.currentTime + '" data-volume="' + file.volume + '" style="text-decoration: none;">' + file.file + '</li>';
         }
         historyFiles = historyFiles + '</ol>';
 
@@ -37,7 +37,9 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
         history.find("a").click(function (e) {
             if (document.title != this.innerText) {
                 player.history[document.title].currentTime = media.currentTime;
+                player.history[document.title].volume = media.volume;
                 var currentTime = this.getAttribute('data-currentTime');
+                var volume = this.getAttribute('data-volume');
                 var playbackRate = media.playbackRate;
                 t.openedFile = this.innerText;
                 media.setSrc(this.href);
@@ -49,6 +51,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                     $('.mejs-captions-layer').css('visibility','hidden');
                 }
                 media.setCurrentTime(currentTime);
+                media.setVolume(volume);
                 media.playbackRate = playbackRate;
                 if (player.options.alwaysShowControls == false) {
                     player.startControlsTimer();                
