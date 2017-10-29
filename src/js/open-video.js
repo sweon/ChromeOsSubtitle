@@ -43,6 +43,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                 media.stop();
                 var prevTitle = document.title;
                 var prevTime = media.currentTime;
+                var prevVolume = media.volume;
                 player.tracks = [];
                 if (openFileInput[0].files[0].type.indexOf("subrip") >= 0) {
                     player.openSrtEntry(openFileInput[0].files[0]);
@@ -62,8 +63,9 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
                     player.history = player.history || {};
                     if (prevTitle != "Subtitle Videoplayer") {
                         player.history[prevTitle].currentTime = prevTime;
+                        player.history[prevTitle].volume = prevVolume;
                     }
-                    player.history[document.title] = {"path": path, "srtFile": srtFile, "currentTime": 0, "file":document.title};
+                    player.history[document.title] = {"path": path, "srtFile": srtFile, "currentTime": 0, "volume": 1.0, "file":document.title};
                     return false;
                 }
             }
