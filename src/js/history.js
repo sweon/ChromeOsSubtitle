@@ -73,7 +73,7 @@ var packaged_app = (window.location.origin.indexOf("chrome-extension") == 0);
             // $('<div class="mejs-button mejs-history-button mejs-history" >' +
             //   '<button type="button" aria-controls="' + t.id + '" title="' + mejs.i18n.t('Open video...') + '" aria-label="' + mejs.i18n.t('Open history...') + '"></button>' +
             //   '</div>')
-        .prependTo(controls)
+	.insertAfter($(".mejs-source-button"))
         .click(function(e) {
             e.preventDefault();
             t.openHistoryWindow();
