@@ -11,6 +11,19 @@ features.push('opensubtitle');
 if (packaged_app)
     features.push('autosrt');
 
+$(document).ready(function(){
+    $('#player').bind('mousewheel', function(e){
+        if(e.originalEvent.wheelDelta /120 > 0) {
+            var newVolume = Math.min(player.volume + 0.1, 1);
+            player.setVolume(newVolume);
+        }
+        else{
+            var newVolume = Math.max(player.volume - 0.1, 0);
+            player.setVolume(newVolume);
+        }
+    });
+});
+
 $(document).keyup(function(e) {
     if (e.which == 179) {
         if (player.readyState != 4)
