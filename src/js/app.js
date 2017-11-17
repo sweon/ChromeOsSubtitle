@@ -14,11 +14,11 @@ if (packaged_app)
 $(document).ready(function(){
     $('#player').bind('mousewheel', function(e){
         if(e.originalEvent.wheelDelta /120 > 0) {
-            var newVolume = Math.min(player.volume + 0.1, 1);
+            var newVolume = Math.min(player.volume + 0.05, 1);
             player.setVolume(newVolume);
         }
         else{
-            var newVolume = Math.max(player.volume - 0.1, 0);
+            var newVolume = Math.max(player.volume - 0.05, 0);
             player.setVolume(newVolume);
         }
     });
