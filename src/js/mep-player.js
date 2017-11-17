@@ -50,7 +50,7 @@
 	// height of audio player
 	audioHeight: -1,		
 	// initial volume when the player starts (overrided by user cookie)
-	startVolume: 1.0,
+	startVolume: 0.8,
 	// useful for <audio> player loops
 	loop: false,
 	// rewind to beginning when media ends
