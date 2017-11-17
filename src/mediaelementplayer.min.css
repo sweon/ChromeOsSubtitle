@@ -738,8 +738,13 @@ a:visited {
 	padding: 3px 5px;
 /*	background: url(background.png);
 	background: rgba(20, 20, 20, 0.8); */
-
 }
+
+.mejs-captions-text::-moz-selection { black: red}
+.mejs-captions-text::selection { black: red; }
+.mejs-captions-text::-moz-selection { background: yellow; }
+.mejs-captions-text::selection { background: yellow; }
+
 /* End: TRACK (Captions and Chapters) */
 
 
