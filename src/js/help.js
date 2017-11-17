@@ -22,6 +22,7 @@
                 '<td>]</td><td>speed up +0.1x</td></tr>'+
                 '<tr><td>1, 2</td><td>set speed 1, 2x</td>'+
                 '<td>3 to 7</td><td>set speed 1.3 to 1.7x</td></tr>'+
+                '<tr><td>wheel</td><td>volume control</td>'+
                 '<td>v</td><td>show control</td></tr>'+
                 '<tr><td>i</td><td>info</td>'+
                 '<td>s</td><td>settings</td></tr>'+
