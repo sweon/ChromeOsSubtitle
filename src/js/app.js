@@ -11,17 +11,15 @@ features.push('opensubtitle');
 if (packaged_app)
     features.push('autosrt');
 
-$(document).ready(function(){
-    $('#player').bind('mousewheel', function(e){
-        if(e.originalEvent.wheelDelta /120 > 0) {
-            var newVolume = Math.min(player.volume + 0.05, 1);
-            player.setVolume(newVolume);
-        }
-        else{
-            var newVolume = Math.max(player.volume - 0.05, 0);
-            player.setVolume(newVolume);
-        }
-    });
+$('#player').on( 'DOMMouseScroll mousewheel', function ( event ) { 
+    if (event.originalEvent.detail > 0 || event.originalEvent.wheelDelta < 0 ) {
+        var newVolume = Math.max(player.volume - 0.05, 0);
+        player.setVolume(newVolume);
+    } else {
+        var newVolume = Math.min(player.volume + 0.05, 1);
+        player.setVolume(newVolume);
+    }
+    return false;
 });
 
 $(document).keyup(function(e) {
