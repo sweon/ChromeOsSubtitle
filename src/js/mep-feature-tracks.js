@@ -568,7 +568,7 @@ t.tracks.push({
 				for (i=0; i<track.entries.times.length; i++) {
 					if (currTime >= track.entries.times[i].start && currTime <= track.entries.times[i].stop){
                         if (t.captionMultiLine){
-                            t.captionsText.html("<span style='color:white'>" + track.entries.text[i-3] + " " + track.entries.text[i-2] + " " + track.entries.text[i-1] + "</span> " + track.entries.text[i] + " <span style='color:white'>" + track.entries.text[i+1] + " " + track.entries.text[i+2] + " " + track.entries.text[i+3] + "</span>");
+                            t.captionsText.html("<span style='color:white;text-shadow: 0 0 1px black'>" + track.entries.text[i-3] + " " + track.entries.text[i-2] + " " + track.entries.text[i-1] + "</span> " + track.entries.text[i] + " <span style='color:white;text-shadow: 0 0 1px black'>" + track.entries.text[i+1] + " " + track.entries.text[i+2] + " " + track.entries.text[i+3] + "</span>");
                         } else {
                             t.captionsText.html(track.entries.text[i]);
                         }
